@@ -35,8 +35,7 @@ dependencies {
     compileOnly("com.gmail.nossr50.mcMMO:mcMMO:2.2.029") {
         exclude("*", "*")
     }
-    compileOnly("org.projectlombok:lombok:1.18.36")
-    annotationProcessor("org.projectlombok:lombok:1.18.36")
+    // lombok removed - JDK 25 incompatible
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
     implementation("org.bstats:bstats-bukkit:3.0.2")
     implementation("com.github.Slimefun-Addon-Community:extrautils:73e76ac06c")

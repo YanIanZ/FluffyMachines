@@ -12,7 +12,7 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import dev.yanianz.star.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -55,10 +55,10 @@ public class ElectricDustFabricator extends AContainer implements RecipeDisplayI
         List<ItemStack> displayRecipes = new ArrayList<>();
 
         for (SlimefunItemStack dust : Constants.dusts) {
-            displayRecipes.add(new CustomItemStack(Material.COBBLESTONE,
+            displayRecipes.add(CustomItemStack.create(Material.COBBLESTONE,
                 "&fAny Cobblestone Variant", "&7Cobblestone", "&7Andesite", "&7Diorite", "&7Granite"
             ));
-            displayRecipes.add(dust);
+            displayRecipes.add(dust.item());
         }
 
         return displayRecipes;

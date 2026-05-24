@@ -11,7 +11,7 @@ import io.ncbpfluffybear.fluffymachines.utils.Utils;
 import java.util.Optional;
 import javax.annotation.Nullable;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import org.apache.commons.lang.WordUtils;
+import io.github.thebusybiscuit.slimefun4.libraries.commons.lang.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -56,7 +56,7 @@ public class KeyedCrafterListener implements Listener {
                     return;
                 }
 
-                if (SmartFactory.getAcceptedItems().contains((SlimefunItemStack) key.getItem())) {
+                if (SmartFactory.getAcceptedItems().contains(key.getItem())) {
 
                     BlockStorage.addBlockInfo(b, "recipe", key.getId());
                     BlockStorage.getInventory(b).replaceExistingItem(SmartFactory.RECIPE_SLOT,
@@ -91,7 +91,7 @@ public class KeyedCrafterListener implements Listener {
     }
 
     private boolean isCargoNode(@Nullable SlimefunItem recipe) {
-        return recipe != null && (recipe.getItem() == SlimefunItems.CARGO_INPUT_NODE
-                || recipe.getItem() == SlimefunItems.CARGO_OUTPUT_NODE || recipe.getItem() == SlimefunItems.CARGO_OUTPUT_NODE_2);
+        return recipe != null && (recipe.getId().equals(SlimefunItems.CARGO_INPUT_NODE.getItemId())
+                || recipe.getId().equals(SlimefunItems.CARGO_OUTPUT_NODE.getItemId()) || recipe.getId().equals(SlimefunItems.CARGO_OUTPUT_NODE_2.getItemId()));
     }
 }

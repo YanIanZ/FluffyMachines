@@ -3,11 +3,11 @@ package io.ncbpfluffybear.fluffymachines.items.tools;
 import io.github.thebusybiscuit.slimefun4.api.items.settings.DoubleRangeSetting;
 import io.github.thebusybiscuit.slimefun4.api.items.settings.IntRangeSetting;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import dev.yanianz.star.common.ChatColors;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.common.ChatColors;
 import io.ncbpfluffybear.fluffymachines.utils.CancelPlace;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import dev.yanianz.star.protection.Interaction;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.ncbpfluffybear.fluffymachines.FluffyMachines;
 import io.ncbpfluffybear.fluffymachines.utils.Constants;
 import io.ncbpfluffybear.fluffymachines.utils.Utils;
@@ -114,11 +114,11 @@ public class WateringCan extends SimpleSlimefunItem<ItemUseHandler> implements C
 
                             if (!updateUses(this, p, item, 1))
                                 return;
-                            blockLocation.getWorld().spawnParticle(Particle.WATER_SPLASH, blockLocation, 0);
+                            blockLocation.getWorld().spawnParticle(Particle.SPLASH, blockLocation, 0);
                             double random = ThreadLocalRandom.current().nextDouble();
                             if (random < sugarCaneSuccessChance.getValue()) {
                                 above.setType(Material.SUGAR_CANE);
-                                blockLocation.getWorld().playEffect(blockLocation, Effect.VILLAGER_PLANT_GROW, 0);
+                                // Effect removed in Paper 26
                             }
 
                         } else {
@@ -134,11 +134,11 @@ public class WateringCan extends SimpleSlimefunItem<ItemUseHandler> implements C
 
                         if (currentAge < maxAge) {
                             if (updateUses(this, p, item, 1)) {
-                                blockLocation.getWorld().spawnParticle(Particle.WATER_SPLASH, blockLocation, 0);
+                                blockLocation.getWorld().spawnParticle(Particle.SPLASH, blockLocation, 0);
                                 double random = ThreadLocalRandom.current().nextDouble();
                                 if (random < cropSuccessChance.getValue()) {
                                     crop.setAge(currentAge + 1);
-                                    blockLocation.getWorld().playEffect(blockLocation, Effect.VILLAGER_PLANT_GROW, 0);
+                                    // Effect removed in Paper 26
                                 }
                             }
 
@@ -156,7 +156,7 @@ public class WateringCan extends SimpleSlimefunItem<ItemUseHandler> implements C
                             return;
                         }
 
-                        blockLocation.getWorld().spawnParticle(Particle.WATER_SPLASH, blockLocation, 0);
+                        blockLocation.getWorld().spawnParticle(Particle.SPLASH, blockLocation, 0);
                         double random = ThreadLocalRandom.current().nextDouble();
                         Material saplingMaterial = b.getType();
 
@@ -169,7 +169,7 @@ public class WateringCan extends SimpleSlimefunItem<ItemUseHandler> implements C
                                 Bukkit.getPluginManager().callEvent(new StructureGrowEvent(
                                     b.getLocation(), getTreeFromSapling(saplingMaterial), false, p, Collections.singletonList(b.getState())
                                 ));
-                                blockLocation.getWorld().playEffect(blockLocation, Effect.VILLAGER_PLANT_GROW, 0);
+                                // Effect removed in Paper 26
 
                             }
 
@@ -183,7 +183,7 @@ public class WateringCan extends SimpleSlimefunItem<ItemUseHandler> implements C
                                         getTreeFromSapling(saplingMaterial))) {
                                         b.setType(saplingMaterial);
                                     }
-                                    blockLocation.getWorld().playEffect(blockLocation, Effect.VILLAGER_PLANT_GROW, 0);
+                                    // Effect removed in Paper 26
                                 }
                             } else {
                                 b.applyBoneMeal(p.getFacing());

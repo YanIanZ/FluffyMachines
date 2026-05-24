@@ -2,10 +2,10 @@ package io.ncbpfluffybear.fluffymachines;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
-import dev.yanianz.star.collections.Pair;
-import dev.yanianz.star.config.Config;
-import dev.yanianz.star.updater.BlobBuildUpdater;
-import dev.yanianz.star.updater.GitHubBuildsUpdater;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.GitHubBuildsUpdater;
 import io.ncbpfluffybear.fluffymachines.listeners.KeyedCrafterListener;
 import io.ncbpfluffybear.fluffymachines.utils.Constants;
 import io.ncbpfluffybear.fluffymachines.utils.Events;
@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import javax.annotation.Nonnull;
-import lombok.SneakyThrows;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -46,9 +45,9 @@ public class FluffyMachines extends JavaPlugin implements SlimefunAddon {
     public static final HashMap<ItemStack, List<Pair<ItemStack, List<RecipeChoice>>>> shapelessVanillaRecipes =
             new HashMap<>();
 
-    @SneakyThrows
     @Override
     public void onEnable() {
+        try {
         instance = this;
         getLogger().log(java.util.logging.Level.INFO, "Maintained by iYanZ");
         Config cfg = new Config(this);
@@ -110,6 +109,10 @@ public class FluffyMachines extends JavaPlugin implements SlimefunAddon {
         getServer().getPluginManager().registerEvents(new KeyedCrafterListener(), this);
 
         final Metrics metrics = new Metrics(this, 8927);
+        } catch (Exception ex) {
+            getLogger().log(Level.SEVERE, "Failed to enable FluffyMachines", ex);
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override

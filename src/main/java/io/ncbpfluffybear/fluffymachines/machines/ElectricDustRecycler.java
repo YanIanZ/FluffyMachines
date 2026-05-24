@@ -11,7 +11,7 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecip
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import dev.yanianz.star.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -52,7 +52,7 @@ public class ElectricDustRecycler extends AContainer implements RecipeDisplayIte
     protected void registerDefaultRecipes() {
 
         for (SlimefunItemStack dust : Constants.dusts) {
-            registerRecipe(1, new CustomItemStack(dust, 8), SlimefunItems.SIFTED_ORE);
+            registerRecipe(1, CustomItemStack.create(dust.item(), 8), SlimefunItems.SIFTED_ORE.item());
         }
     }
 
