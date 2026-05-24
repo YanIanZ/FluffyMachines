@@ -2,10 +2,10 @@ package io.ncbpfluffybear.fluffymachines;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.GitHubBuildsUpdater;
+import dev.yanianz.star.collections.Pair;
+import dev.yanianz.star.config.Config;
+import dev.yanianz.star.updater.BlobBuildUpdater;
+import dev.yanianz.star.updater.GitHubBuildsUpdater;
 import io.ncbpfluffybear.fluffymachines.listeners.KeyedCrafterListener;
 import io.ncbpfluffybear.fluffymachines.utils.Constants;
 import io.ncbpfluffybear.fluffymachines.utils.Events;
@@ -50,7 +50,7 @@ public class FluffyMachines extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onEnable() {
         instance = this;
-        // Read something from your config.yml
+        getLogger().log(java.util.logging.Level.INFO, "Maintained by iYanZ");
         Config cfg = new Config(this);
 
         if (cfg.getBoolean("options.auto-update") && getDescription().getVersion().startsWith("Dev - ")) {
